@@ -12,6 +12,7 @@
 ## Запуск SUT приложения
 
     0. Открыть второй терминал в IDEA
+
     
     Для запуска SUT с СУБД MySQL необходимо выполнить в терминале команду — "java -jar artifacts/aqa-shop.jar -P:jdbc.url=jdbc:mysql://192.168.99.100:3306/app -P:jdbc.user=app -P:jdbc.password=pass"
 
