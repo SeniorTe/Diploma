@@ -14,4 +14,4 @@
 
 Для запуска SUT с СУБД MySQL необходимо выполнить в терминале команду — "java -jar artifacts/aqa-shop.jar"
 
-Для запуска SUT с СУБД Postgres необходимо выполнить в терминале команду — "java -jar artifacts/aqa-shop.jar -P:jdbc.url=jdbc:postgresql://localhost:5432/app -P:jdbc.user=app -P:jdbc.password=pass"
+Для запуска SUT с СУБД Postgres необходимо выполнить в терминале команду — "java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar"
