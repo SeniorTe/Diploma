@@ -28,16 +28,17 @@ public class DataHelper {
         return faker.business().creditCardNumber();
     }
 
-    public static String getUnValidCardNumber() {
-        return faker.internet().password(16, 16);
-    }
-
     public static String getValidMonths() {
         return generateDate(2, "MM");
     }
 
     public static String getUnValidMonths() {
         return generateDate(-2, "MM");
+    }
+
+    public static String getUnValidMonthsOutside() {
+        int month = Integer.parseInt(generateDate(0, "MM") + 12);
+        return String.valueOf(month);
     }
 
     public static String getValidYear() {
@@ -52,8 +53,12 @@ public class DataHelper {
         return faker.name().fullName();
     }
 
-    public static String getUnValidOwnerCard() {
-        return faker.idNumber().toString();
+    public static String getArabicOwnerCard() {
+        return "عباس";
+    }
+
+    public static String getOutsideOwnerCard() {
+        return "jjbkjlghkjfkhgckjgfkuygfjhbhjbkjhgkjgfhgvbilk,ughjmtgjfbkhl;ujhbjgy,knbvcgfyuhkjbmncfxdjtkrylu;i'o;kj/l,ncfdrhytihulkbjmfndtryulhjbk,vgtfryihukbjvjgftuy7uiohjgkftryuhjbvgftryiuohjkbhmv,gktiojlknb,vtyiuohjnbhvtyihojnbk.hvj,gfytvhgjkfuytiohjnbh,vjgfljkhvpoiwre";
     }
 
     public static String getValidCvcCode() {
@@ -61,6 +66,6 @@ public class DataHelper {
     }
 
     public static String getUnValidCvcCode() {
-        return faker.internet().password(3, 3);
+        return faker.number().digits(2);
     }
 }

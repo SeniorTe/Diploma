@@ -16,7 +16,7 @@ public class Requests {
     }
 
     @SneakyThrows
-    public static Connection getConnect() {
+    private static Connection getConnect() {
         return DriverManager.getConnection(dataBaseUrl, "app", "pass");
     }
 
@@ -25,8 +25,7 @@ public class Requests {
         QueryRunner runner = new QueryRunner();
         String SqlStatus = "SELECT status FROM payment_entity ORDER BY created DESC LIMIT 1";
         try (var connection = getConnect()) {
-            String result = runner.query(connection, SqlStatus, new ScalarHandler<>());
-            return result;
+            return runner.query(connection, SqlStatus, new ScalarHandler<>());
         }
     }
 
@@ -35,8 +34,7 @@ public class Requests {
         QueryRunner runner = new QueryRunner();
         String SqlStatus = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1";
         try (var connection = getConnect()) {
-            String result = runner.query(connection, SqlStatus, new ScalarHandler<>());
-            return result;
+            return runner.query(connection, SqlStatus, new ScalarHandler<>());
         }
     }
 
