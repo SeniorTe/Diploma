@@ -10,6 +10,7 @@ import ru.netology.page.DashboardPage;
 import lombok.SneakyThrows;
 
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TourBuyServiceDebitCardNegativeTest {
@@ -28,7 +29,7 @@ public class TourBuyServiceDebitCardNegativeTest {
     String outsideOwnerCard = DataHelper.getOutsideOwnerCard();
     String unValidCvcCode = DataHelper.getUnValidCvcCode();
     String unValidMonthsOutside = DataHelper.getUnValidMonthsOutside();
-    String zero = "0";
+    String zero = "000";
     String empty = " ";
 
     @BeforeEach
@@ -61,7 +62,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByEmptyCardNumberCard() {
+    void shouldErrorMessageByEmptyCardNumber() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(empty, validMonths, validYear, validOwnerCard, validCvcCode);
         payPage.messageErrorByEmpty();
@@ -70,7 +71,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByEmptyMonthCard() {
+    void shouldErrorMessageByEmptyMonth() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, empty, validYear, validOwnerCard, validCvcCode);
         payPage.messageErrorByEmpty();
@@ -79,7 +80,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByEmptyYearCard() {
+    void shouldErrorMessageByEmptyYear() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, validMonths, empty, validOwnerCard, validCvcCode);
         payPage.messageErrorByEmpty();
@@ -88,7 +89,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByEmptyOwnerCard() {
+    void shouldErrorMessageByEmptyOwner() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, validMonths, validYear, empty, validCvcCode);
         payPage.messageErrorByEmpty();
@@ -97,7 +98,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByEmptyCvcCard() {
+    void shouldErrorMessageByEmptyCvc() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, validMonths, validYear, validOwnerCard, empty);
         payPage.messageErrorByEmpty();
@@ -106,7 +107,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByUnValidMonthBeforeCard() {
+    void shouldErrorMessageByUnValidMonthBefore() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, unValidMonths, validYear, validOwnerCard, validCvcCode);
         payPage.messageErrorByUnValidMonth();
@@ -115,7 +116,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByUnValidMonthZeroCard() {
+    void shouldErrorMessageByUnValidMonthZero() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, zero, validYear, validOwnerCard, validCvcCode);
         payPage.messageErrorByUnCorrectFormat();
@@ -124,7 +125,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByUnValidMonthOutsideCard() {
+    void shouldErrorMessageByUnValidMonthOutside() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, unValidMonthsOutside, validYear, validOwnerCard, validCvcCode);
         payPage.messageErrorByUnValidMonth();
@@ -133,7 +134,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByUnValidYearCard() {
+    void shouldErrorMessageByUnValidYear() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, validMonths, unValidYear, validOwnerCard, validCvcCode);
         payPage.messageErrorByUnValidYear();
@@ -142,7 +143,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByUnValidYearZeroCard() {
+    void shouldErrorMessageByUnValidYearZero() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, validMonths, zero, validOwnerCard, validCvcCode);
         payPage.messageErrorByUnCorrectFormat();
@@ -151,7 +152,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByNumberOwnerCard() {
+    void shouldErrorMessageByNumberOwner() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, validMonths, validYear, approvedCardNumber, validCvcCode);
         payPage.messageErrorByUnCorrectFormat();
@@ -160,7 +161,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByArabicOwnerCard() {
+    void shouldErrorMessageByArabicOwner() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, validMonths, validYear, arabicOwnerCard, validCvcCode);
         payPage.messageErrorByUnCorrectFormat();
@@ -169,7 +170,7 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByOutsideOwnerCard() {
+    void shouldErrorMessageByOutsideOwner() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, validMonths, validYear, outsideOwnerCard, validCvcCode);
         payPage.messageErrorByUnCorrectFormat();
@@ -178,9 +179,18 @@ public class TourBuyServiceDebitCardNegativeTest {
 
     @Test
     @SneakyThrows
-    void shouldErrorMessageByUnValidCVCCodeCard() {
+    void shouldErrorMessageByUnValidCVCCode() {
         var payPage = dashboardPage.payByCard();
         payPage.fillingForm(approvedCardNumber, validMonths, validYear, validOwnerCard, unValidCvcCode);
+        payPage.messageErrorByUnCorrectFormat();
+        assertNull(Requests.getPaymentGateStatus());
+    }
+
+    @Test
+    @SneakyThrows
+    void shouldErrorMessageByUnValidCVCCodeZero() {
+        var payPage = dashboardPage.payByCard();
+        payPage.fillingForm(approvedCardNumber, validMonths, validYear, validOwnerCard, zero);
         payPage.messageErrorByUnCorrectFormat();
         assertNull(Requests.getPaymentGateStatus());
     }
