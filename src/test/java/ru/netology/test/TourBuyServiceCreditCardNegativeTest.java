@@ -47,6 +47,7 @@ public class TourBuyServiceCreditCardNegativeTest {
     static void downAll() {
         SelenideLogger.removeListener("allure");
     }
+
     @AfterEach
     void down() {
         Requests.clearDataBase();
